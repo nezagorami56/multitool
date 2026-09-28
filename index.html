@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Маркетинговый калькулятор — ROAS, ROMI, CAC и CPL</title>
+  <meta name="description" content="Бесплатный маркетинговый калькулятор: рассчитайте ROAS, ROMI, CAC, CPL, конверсию, прибыль и точку безубыточности.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Маркетинговый калькулятор",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Мультитул — на главную">
+      <span class="brand-mark">M</span>
+      <span>мультитул</span>
+    </a>
+    <span class="header-note">Инструменты для роста бизнеса</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Бесплатный онлайн-инструмент</p>
+      <h1>Маркетинговый<br><span>калькулятор</span></h1>
+      <p class="hero-copy">Проверьте экономику рекламной кампании за минуту. Без регистрации, таблиц и сложных формул.</p>
+    </section>
+
+    <section class="calculator" aria-labelledby="calculator-title">
+      <div class="input-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="step">Шаг 1</p>
+            <h2 id="calculator-title">Введите данные</h2>
+          </div>
+          <button class="reset-button" id="reset" type="button">Сбросить</button>
+        </div>
+
+        <div class="fields">
+          <label>
+            <span>Расходы на рекламу</span>
+            <span class="field-wrap"><input id="spend" type="number" min="0" step="100" value="100000"><b>₽</b></span>
+          </label>
+          <label>
+            <span>Выручка с рекламы</span>
+            <span class="field-wrap"><input id="revenue" type="number" min="0" step="100" value="450000"><b>₽</b></span>
+          </label>
+          <label>
+            <span>Маржинальность</span>
+            <span class="field-wrap"><input id="margin" type="number" min="0" max="100" step="1" value="40"><b>%</b></span>
+            <small>Доля выручки после себестоимости</small>
+          </label>
+          <label>
+            <span>Количество лидов</span>
+            <span class="field-wrap"><input id="leads" type="number" min="0" step="1" value="800"><b>шт.</b></span>
+          </label>
+          <label>
+            <span>Количество клиентов</span>
+            <span class="field-wrap"><input id="customers" type="number" min="0" step="1" value="120"><b>шт.</b></span>
+          </label>
+        </div>
+        <p class="form-warning" id="form-warning" role="alert" hidden></p>
+        <p class="privacy">Все расчёты выполняются только в вашем браузере.</p>
+      </div>
+
+      <div class="results-panel" aria-live="polite">
+        <div class="panel-heading result-heading">
+          <div>
+            <p class="step">Результат</p>
+            <h2>Эффективность кампании</h2>
+          </div>
+          <span class="status" id="status">Окупаемая</span>
+        </div>
+
+        <article class="hero-result">
+          <div>
+            <p>ROMI</p>
+            <strong id="romi">80%</strong>
+          </div>
+          <p id="romi-caption">Каждый вложенный рубль принёс 0,80 ₽ прибыли</p>
+        </article>
+
+        <div class="metric-grid">
+          <article><span>ROAS</span><strong id="roas">4,50×</strong><small>Возврат рекламных расходов</small></article>
+          <article><span>Прибыль</span><strong id="profit">80 000 ₽</strong><small>После себестоимости и рекламы</small></article>
+          <article><span>CAC</span><strong id="cac">833 ₽</strong><small>Стоимость одного клиента</small></article>
+          <article><span>CPL</span><strong id="cpl">125 ₽</strong><small>Стоимость одного лида</small></article>
+          <article><span>Конверсия</span><strong id="conversion">15%</strong><small>Из лида в клиента</small></article>
+          <article><span>Средний чек</span><strong id="aov">3 750 ₽</strong><small>Выручка на клиента</small></article>
+        </div>
+
+        <div class="breakeven">
+          <span>Выручка для безубыточности</span>
+          <strong id="breakeven">250 000 ₽</strong>
+        </div>
+
+        <div class="funnel">
+          <div class="funnel-heading"><span>Воронка продаж</span><small id="funnel-label">800 лидов → 120 клиентов</small></div>
+          <div class="funnel-track"><span id="funnel-bar"></span></div>
+        </div>
+
+        <button class="copy-button" id="copy-result" type="button">
+          <span>Скопировать результат</span><b aria-hidden="true">↗</b>
+        </button>
+      </div>
+    </section>
+
+    <section class="explanation">
+      <div>
+        <p class="eyebrow">Как читать результат</p>
+        <h2>Главные показатели<br>на одном экране</h2>
+      </div>
+      <div class="explanation-grid">
+        <article><b>01</b><h3>ROAS</h3><p>Показывает, сколько рублей выручки вернул каждый рубль рекламного бюджета.</p></article>
+        <article><b>02</b><h3>ROMI</h3><p>Учитывает маржинальность и показывает реальную окупаемость маркетинговых вложений.</p></article>
+        <article><b>03</b><h3>CAC и CPL</h3><p>Помогают сравнивать каналы по стоимости привлечённого клиента и полученного лида.</p></article>
+      </div>
+    </section>
+
+    <section class="formula-section">
+      <div class="formula-intro">
+        <p class="eyebrow">Прозрачный расчёт</p>
+        <h2>Никакой магии.<br>Только формулы.</h2>
+        <p>Калькулятор не сохраняет ваши данные. Все значения пересчитываются прямо в браузере при каждом изменении.</p>
+      </div>
+      <div class="formula-list">
+        <article><span>ROAS</span><code>Выручка ÷ Расходы на рекламу</code></article>
+        <article><span>ROMI</span><code>(Валовая прибыль − Реклама) ÷ Реклама × 100%</code></article>
+        <article><span>CAC</span><code>Расходы на рекламу ÷ Клиенты</code></article>
+        <article><span>CPL</span><code>Расходы на рекламу ÷ Лиды</code></article>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div>
+        <p class="eyebrow">Частые вопросы</p>
+        <h2>О показателях</h2>
+      </div>
+      <div class="faq-list">
+        <details open><summary>Чем ROMI отличается от ROAS?</summary><p>ROAS сравнивает выручку с рекламными расходами. ROMI дополнительно учитывает маржинальность, поэтому лучше показывает, принесла ли кампания прибыль.</p></details>
+        <details><summary>Какую маржинальность указывать?</summary><p>Используйте долю выручки, которая остаётся после переменных расходов и себестоимости, но до вычета рекламного бюджета.</p></details>
+        <details><summary>Как понять, что реклама окупается?</summary><p>Положительный ROMI означает, что валовая прибыль покрыла рекламные расходы. Но итоговое управленческое решение также должно учитывать постоянные расходы бизнеса.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Мультитул</span>
+    <p>Расчёт носит информационный характер.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
