@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор UTM-меток онлайн — Мультитул</title>
+  <meta name="description" content="Соберите ссылку с UTM-метками бесплатно: укажите адрес сайта, utm_source, utm_medium и utm_campaign. Готовая ссылка с копированием в один клик.">
+  <link rel="canonical" href="https://nezagorami56.github.io/multitool/utm-builder/">
+  <meta property="og:title" content="Генератор UTM-меток — Мультитул">
+  <meta property="og:description" content="Адрес сайта, три метки — и ссылка для вашей кампании готова.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nezagorami56.github.io/multitool/utm-builder/">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="utm.css">
+  <script src="url-builder.js" defer></script>
+  <script src="utm.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Генератор UTM-меток — Мультитул","url":"https://nezagorami56.github.io/multitool/utm-builder/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="Мультитул — на главную"><span class="brand-mark">M</span><span>мультитул</span></a>
+    <span class="header-note">Полезные инструменты на каждый день</span>
+  </header>
+  <nav class="tool-nav" aria-label="Инструменты">
+    <a href="../">Маркетинговый калькулятор</a>
+    <a href="./" aria-current="page">Генератор UTM-меток <span aria-hidden="true">↗</span></a>
+  </nav>
+
+  <main>
+    <section class="hero utm-hero">
+      <div>
+        <p class="eyebrow">Маркетинг · Инструмент 02</p>
+        <h1>Генератор<br><span>UTM-меток</span></h1>
+      </div>
+      <p class="hero-copy">Знайте, откуда приходят ваши клиенты. Добавьте метки к ссылке для рекламы, рассылки или поста.</p>
+    </section>
+
+    <section class="calculator utm-builder" aria-labelledby="builder-title">
+      <form class="input-panel" id="utm-form" novalidate autocomplete="off">
+        <div class="panel-heading">
+          <div><p class="step">Шаг 1</p><h2 id="builder-title">Соберите ссылку</h2></div>
+          <button class="reset-button" type="reset">Очистить</button>
+        </div>
+        <p class="form-intro">Заполните все четыре поля. Ссылка появится автоматически.</p>
+        <div class="utm-fields">
+          <div class="utm-field">
+            <label for="website">Адрес сайта <span class="field-tag">URL</span></label>
+            <div class="field-wrap"><input id="website" name="website" type="text" inputmode="url" placeholder="https://example.com" required spellcheck="false" autocapitalize="none" aria-describedby="website-hint website-error"></div>
+            <small id="website-hint">Можно без https:// — добавим его за вас.</small>
+            <p class="field-error" id="website-error" hidden></p>
+          </div>
+          <div class="utm-field">
+            <label for="source">Источник <span class="field-tag">utm_source</span></label>
+            <div class="field-wrap"><input id="source" name="source" type="text" placeholder="yandex" required spellcheck="false" autocapitalize="none" aria-describedby="source-hint source-error"></div>
+            <small id="source-hint">Откуда переходят: yandex, vk, telegram.</small>
+            <p class="field-error" id="source-error" hidden></p>
+          </div>
+          <div class="utm-field">
+            <label for="medium">Канал <span class="field-tag">utm_medium</span></label>
+            <div class="field-wrap"><input id="medium" name="medium" type="text" placeholder="cpc" required spellcheck="false" autocapitalize="none" aria-describedby="medium-hint medium-error"></div>
+            <small id="medium-hint">Тип трафика: cpc, email, social.</small>
+            <p class="field-error" id="medium-error" hidden></p>
+          </div>
+          <div class="utm-field">
+            <label for="campaign">Кампания <span class="field-tag">utm_campaign</span></label>
+            <div class="field-wrap"><input id="campaign" name="campaign" type="text" placeholder="autumn_sale" required spellcheck="false" autocapitalize="none" aria-describedby="campaign-hint campaign-error"></div>
+            <small id="campaign-hint">Название, по которому вы узнаете кампанию.</small>
+            <p class="field-error" id="campaign-error" hidden></p>
+          </div>
+        </div>
+        <div class="input-bottom">
+          <button class="example-button" id="fill-example" type="button">Заполнить пример <span aria-hidden="true">↗</span></button>
+          <span>Без регистрации</span>
+        </div>
+        <noscript><p class="form-warning">Для создания UTM-ссылки включите JavaScript в браузере.</p></noscript>
+      </form>
+
+      <div class="results-panel utm-result">
+        <div class="panel-heading result-heading">
+          <div><p class="step">Шаг 2</p><h2>Ваша UTM-ссылка</h2></div>
+          <span class="status" id="link-status" role="status">0 из 4</span>
+        </div>
+        <div class="link-preview">
+          <label for="result-url">Готовая ссылка</label>
+          <textarea id="result-url" readonly spellcheck="false" rows="5" placeholder="Здесь появится ссылка с вашими метками" aria-describedby="result-hint"></textarea>
+          <p id="result-hint">Введите адрес сайта, источник, канал и название кампании.</p>
+        </div>
+        <button class="copy-button utm-copy" id="copy-link" type="button" disabled>
+          <span>Скопировать ссылку</span><b aria-hidden="true">↗</b>
+        </button>
+        <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+
+        <div class="link-breakdown">
+          <p class="breakdown-title">Что расскажет ссылка</p>
+          <dl>
+            <div><dt><i class="source-dot" aria-hidden="true"></i>Источник</dt><dd id="preview-source">—</dd></div>
+            <div><dt><i class="medium-dot" aria-hidden="true"></i>Канал</dt><dd id="preview-medium">—</dd></div>
+            <div><dt><i class="campaign-dot" aria-hidden="true"></i>Кампания</dt><dd id="preview-campaign">—</dd></div>
+          </dl>
+        </div>
+        <p class="result-note"><span aria-hidden="true">↳</span> Разместите готовую ссылку в рекламе или публикации. Метки помогут различать переходы в подключённой системе аналитики.</p>
+      </div>
+    </section>
+
+    <section class="explanation">
+      <div><p class="eyebrow">Три метки — одна история</p><h2>Откуда.<br>Как. Зачем.</h2></div>
+      <div class="explanation-grid">
+        <article><b>01 / SOURCE</b><h3>Откуда пришли</h3><p>Укажите площадку, на которой размещена ссылка. Например, <code>yandex</code> для рекламы в Яндексе.</p></article>
+        <article><b>02 / MEDIUM</b><h3>По какому каналу</h3><p>Обозначьте тип размещения: <code>cpc</code> для рекламы с оплатой за клик или <code>email</code> для рассылки.</p></article>
+        <article><b>03 / CAMPAIGN</b><h3>Из какой кампании</h3><p>Дайте кампании понятное имя, например <code>autumn_sale</code>. Используйте его во всех её размещениях.</p></article>
+      </div>
+    </section>
+
+    <aside class="naming-tip">
+      <span class="tip-mark" aria-hidden="true">Aa</span>
+      <div><h2>Одинаковые названия — аккуратные отчёты</h2><p>Используйте единый регистр и понятные названия. Например, <code>telegram</code> и <code>Telegram</code> могут учитываться как разные источники. Регистр ваших меток мы сохраняем.</p></div>
+    </aside>
+
+    <section class="faq">
+      <div><p class="eyebrow">Частые вопросы</p><h2>О UTM-метках</h2></div>
+      <div class="faq-list">
+        <details open><summary>Что такое UTM-метка?</summary><p>Это параметр в адресе страницы, который помогает системе аналитики определить источник, канал и кампанию перехода. Генератор собирает полную ссылку со всеми тремя метками.</p></details>
+        <details><summary>Что будет с параметрами, которые уже есть в ссылке?</summary><p>Другие параметры, например фильтры каталога, и якорь после # сохранятся. Если в адресе уже есть utm_source, utm_medium или utm_campaign, генератор заменит их вашими значениями, без дубликатов.</p></details>
+        <details><summary>Можно использовать кириллицу и пробелы?</summary><p>Да. Они кодируются для корректной передачи в ссылке: вы можете увидеть проценты и другие символы. Само значение метки сохраняется. Для удобства чтения можно использовать латиницу и подчёркивания.</p></details>
+        <details><summary>Где посмотреть переходы по готовой ссылке?</summary><p>В подключённой к вашему сайту системе аналитики. Сам генератор собирает ссылку, но не считает переходы. Подробнее о параметрах — в <a href="https://support.google.com/analytics/answer/10917952?hl=ru" target="_blank" rel="noopener noreferrer">справке Google Analytics</a>.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer><span>Мультитул</span><p>Полезные инструменты. Под рукой.</p></footer>
+</body>
+</html>
